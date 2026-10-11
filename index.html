@@ -55,7 +55,7 @@ a:hover{color:#ff9b00}
 </style>
 </helmet>
 <template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#121311"></rect><text x="50" y="62" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="30" font-weight="900" fill="#ff9b00">DW</text></svg></template>
-<div ref="{{ rootRef }}" data-screen-label="Portfolio" style="container-type:inline-size;min-height:100%;background-color:{{ t.paper }};background-image:linear-gradient({{ t.grid }} 1px,transparent 1px),linear-gradient(90deg,{{ t.grid }} 1px,transparent 1px);background-size:56px 56px;color:{{ t.ink }};font-family:'Schibsted Grotesk','Noto Sans TC',sans-serif;transition:background-color .4s ease,color .4s ease;-webkit-font-smoothing:antialiased">
+<div ref="{{ rootRef }}" data-screen-label="Portfolio" style="container-type:inline-size;overflow-x:clip;min-height:100%;background-color:{{ t.paper }};background-image:linear-gradient({{ t.grid }} 1px,transparent 1px),linear-gradient(90deg,{{ t.grid }} 1px,transparent 1px);background-size:56px 56px;color:{{ t.ink }};font-family:'Schibsted Grotesk','Noto Sans TC',sans-serif;transition:background-color .4s ease,color .4s ease;-webkit-font-smoothing:antialiased">
 
   <nav style="position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 clamp(20px,5cqw,72px);height:60px;background:{{ t.paper }};border-bottom:1px solid {{ t.ink }};transition:background .4s ease">
     <a href="#top" onClick="{{ logoClick }}" aria-label="DEX WANG" style="position:relative;display:flex;font-family:'Archivo',sans-serif;font-weight:800;font-size:17px;letter-spacing:-.02em;font-stretch:112%"><sc-for list="{{ logo }}" as="L" hint-placeholder-count="8"><span aria-hidden="true" style="display:inline-block;white-space:pre;color:{{ L.color }};-webkit-text-stroke:{{ L.stroke }};transform:{{ L.tf }};transition:{{ L.tr }}">{{ L.ch }}</span></sc-for><span aria-hidden="true" style="position:absolute;top:-6px;bottom:-6px;left:{{ scan.x }};width:1px;background:{{ t.ink }};opacity:{{ scan.op }};transition:{{ scan.tr }};pointer-events:none"></span></a>
@@ -160,7 +160,7 @@ a:hover{color:#ff9b00}
               <div style="display:flex;align-items:center;color:{{ t.accent }}"><span style="width:1.5px;height:10px;background:currentColor"></span><span style="flex:1;height:1px;background:currentColor;opacity:.7"></span><span style="width:1.5px;height:10px;background:currentColor"></span></div>
               <div style="display:flex;align-items:baseline;gap:4px;font-family:'Archivo','Noto Serif TC',serif;font-weight:800;font-size:clamp(34px,3.4cqw,46px);line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:{{ t.ink }}">{{ st.v }}<span style="font-size:.4em;font-weight:700;letter-spacing:0">{{ st.u }}</span></div>
               <div style="font-size:14px;font-weight:700;line-height:1.4;color:{{ t.ink }}">{{ st.k }}</div>
-              <div style="display:flex;flex-direction:column;gap:2px;font-size:13px;line-height:1.55;color:{{ t.muted }}"><sc-for list="{{ st.d }}" as="dl" hint-placeholder-count="2"><span>{{ dl }}</span></sc-for></div>
+              <div style="display:flex;flex-direction:column;gap:2px;font-size:{{ m.statFs }};line-height:1.55;color:{{ t.muted }}"><sc-for list="{{ st.d }}" as="dl" hint-placeholder-count="2"><span style="white-space:{{ m.statWs }}">{{ dl }}</span></sc-for></div>
             </div>
           </sc-for>
         </div>
@@ -170,13 +170,13 @@ a:hover{color:#ff9b00}
   </header>
 
   <section style="padding:clamp(80px,10cqw,152px) clamp(20px,5cqw,72px) 0">
-    <div style="display:flex;justify-content:space-between;gap:12px;padding-bottom:14px;font-size:12px;font-weight:700;letter-spacing:.12em;color:{{ t.muted }}"><span>INDEX</span><span>04</span></div>
+    <div style="display:flex;justify-content:space-between;gap:12px;padding-bottom:14px;font-size:12px;font-weight:700;letter-spacing:.12em;color:{{ t.muted }}"><span>INDEX</span><span>03</span></div>
     <div style="border-top:1px solid {{ t.ink }}">
       <sc-for list="{{ idx }}" as="row" hint-placeholder-count="4">
-        <a href="{{ row.href }}" data-reveal="1" style="display:flex;align-items:baseline;gap:{{ row.gap }};padding:clamp(18px,2cqw,28px) 0;border-bottom:1px solid {{ t.line }};transition:padding .35s cubic-bezier(.6,0,.2,1.35),color .25s" style-hover="color:{{ t.accent }};padding-left:12px">
+        <a href="{{ row.href }}" data-reveal="1" style="display:{{ row.aDisp }};grid-template-columns:{{ row.gtc }};align-items:baseline;gap:{{ row.gap }};padding:clamp(18px,2cqw,28px) 0;border-bottom:1px solid {{ t.line }};transition:padding .35s cubic-bezier(.6,0,.2,1.35),color .25s" style-hover="color:{{ t.accent }};padding-left:12px">
           <span style="font-size:13px;font-weight:700;font-variant-numeric:tabular-nums;color:{{ t.accent }}">{{ row.n }}</span>
-          <span style="flex:1;white-space:{{ row.idxWs }};flex-shrink:0;font-family:'Archivo','Noto Serif TC',serif;font-size:clamp(30px,5.4cqw,72px);font-weight:900;letter-spacing:-.02em;line-height:1.05">{{ row.title }}</span>
-          <span style="display:flex;flex-direction:{{ row.idxDir }};min-width:0;flex-shrink:1;flex-wrap:wrap;justify-content:flex-end;align-items:flex-end;row-gap:2px;font-size:{{ row.mfs }};font-weight:600;letter-spacing:.06em;line-height:1.5;color:{{ t.muted }};text-align:right"><sc-for list="{{ row.parts }}" as="q" hint-placeholder-count="2"><span style="display:inline-flex;white-space:nowrap">{{ q.t }}<sc-if value="{{ q.sep }}" hint-placeholder-val="{{ true }}"><span aria-hidden="true" style="margin:{{ q.sm }};opacity:.6">│</span></sc-if></span></sc-for></span>
+          <span style="flex:0 0 auto;white-space:nowrap;min-width:0;font-family:'Archivo','Noto Serif TC',serif;font-size:{{ row.tfs }};font-weight:900;letter-spacing:-.02em;line-height:1.05">{{ row.title }}</span>
+          <span style="grid-column:{{ row.mCol }};grid-row:{{ row.mRow }};flex:1 1 0;display:flex;flex-direction:row;min-width:0;flex-wrap:wrap;justify-content:{{ row.mJc }};align-items:baseline;row-gap:2px;font-size:{{ row.mfs }};font-weight:600;letter-spacing:.06em;line-height:1.5;color:{{ t.muted }};text-align:{{ row.mTa }}"><sc-for list="{{ row.parts }}" as="q" hint-placeholder-count="2"><span style="display:inline-flex;white-space:nowrap">{{ q.t }}<sc-if value="{{ q.sep }}" hint-placeholder-val="{{ true }}"><span aria-hidden="true" style="margin:{{ q.sm }};opacity:.6">│</span></sc-if></span></sc-for></span>
           <span aria-hidden="true" style="display:{{ row.arrowDisp }};font-size:clamp(16px,1.6cqw,20px);font-weight:700">↓</span>
         </a>
       </sc-for>
@@ -187,7 +187,7 @@ a:hover{color:#ff9b00}
     <div style="display:flex;justify-content:space-between;gap:12px;padding-bottom:14px;border-bottom:1px solid {{ t.ink }};font-size:12px;font-weight:700;letter-spacing:.12em;color:{{ t.muted }}">
       <span>DWG. 02 │ EXPERIENCE</span><span>2016 → 2026</span>
     </div>
-    <h2 data-reveal="1" style="margin:clamp(32px,4cqw,56px) 0 0;max-width:12em;font-family:'Archivo','Noto Serif TC',serif;font-weight:900;font-size:clamp(40px,6.6cqw,92px);letter-spacing:-.02em;line-height:1.15;"><sc-for list="{{ c.expTitle }}" as="w" hint-placeholder-count="2"><span style="display:inline-block">{{ w }}</span></sc-for></h2>
+    <h2 data-reveal="1" style="margin:clamp(32px,4cqw,56px) 0 0;font-family:'Archivo','Noto Serif TC',serif;font-weight:900;font-size:{{ m.fsH2 }};letter-spacing:-.02em;line-height:1.15;"><sc-for list="{{ c.expTitle }}" as="w" hint-placeholder-count="2"><span style="display:block">{{ w }}</span></sc-for></h2>
     <p data-reveal="1" style="max-width:none;margin:clamp(20px,2.5cqw,32px) 0 0;font-size:clamp(15px,1.55cqw,21px);line-height:1.7;color:{{ t.muted }};text-wrap:pretty"><sc-for list="{{ m.expLede }}" as="pg" hint-placeholder-count="2"><span style="display:block;margin-top:{{ pg.mt }}"><sc-for list="{{ pg.l }}" as="ln" hint-placeholder-count="1"><span style="display:block">{{ ln }}</span></sc-for></span></sc-for></p>
     <div style="position:relative;margin-top:clamp(48px,6cqw,88px)">
       <div style="position:absolute;left:clamp(72px,10cqw,148px);top:0;bottom:0;width:1px;background:{{ t.ink }}"></div>
@@ -198,9 +198,9 @@ a:hover{color:#ff9b00}
             <div style="margin-top:8px;font-size:11px;font-weight:700;letter-spacing:.06em;line-height:1.5;color:{{ t.muted }}">{{ x.m }}</div>
           </div>
           <div style="position:relative;flex:1;min-width:0;padding-left:clamp(18px,3cqw,40px)">
-            <span style="position:absolute;left:-1px;top:12px;width:14px;height:1px;background:{{ t.ink }}"></span>
-            <div style="font-size:11px;font-weight:700;letter-spacing:.1em;color:{{ t.accent }}">{{ x.span }}</div>
-            <h3 style="margin:8px 0 0;font-size:clamp(21px,2.4cqw,30px);font-weight:700;letter-spacing:-.01em;line-height:1.3">{{ x.role }}</h3>
+            <span style="position:absolute;left:-1px;top:8px;width:14px;height:1px;background:{{ t.ink }}"></span>
+            <div style="font-size:11px;font-weight:700;letter-spacing:.1em;line-height:16px;color:{{ t.accent }}">{{ x.span }}</div>
+            <h3 style="margin:8px 0 0;font-size:clamp(21px,2.4cqw,30px);font-weight:700;letter-spacing:-.01em;line-height:1.3;white-space:pre-line">{{ x.role }}</h3>
             <div style="margin-top:6px;font-size:14px;font-weight:500;color:{{ t.muted }}">{{ x.co }}</div>
             <ul style="max-width:40em;margin:16px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;font-size:15px;line-height:1.65;color:{{ t.muted }}"><sc-for list="{{ x.sum }}" as="b" hint-placeholder-count="3"><li style="display:grid;grid-template-columns:14px minmax(0,1fr);gap:10px;text-wrap:pretty"><span style="width:8px;height:1px;margin-top:.85em;background:{{ t.accent }}"></span><span>{{ b }}</span></li></sc-for></ul>
           </div>
@@ -211,9 +211,9 @@ a:hover{color:#ff9b00}
 
   <section id="projects" style="padding:clamp(96px,11cqw,168px) clamp(20px,5cqw,72px) 0">
     <div style="display:flex;justify-content:space-between;gap:12px;padding-bottom:14px;border-bottom:1px solid {{ t.ink }};font-size:12px;font-weight:700;letter-spacing:.12em;color:{{ t.muted }}">
-      <span>DWG. 03 │ TRACK RECORD</span><span>B2B │ RETAIL</span>
+      <span>DWG. 03 │ TRACK RECORD</span><span>04 FIELDS</span>
     </div>
-    <h2 data-reveal="1" style="margin:clamp(32px,4cqw,56px) 0 0;max-width:12em;font-family:'Archivo','Noto Serif TC',serif;font-weight:900;font-size:clamp(40px,6.6cqw,92px);letter-spacing:-.02em;line-height:1.15;"><sc-for list="{{ c.projTitle }}" as="w" hint-placeholder-count="2"><span style="display:inline-block">{{ w }}</span></sc-for></h2>
+    <h2 data-reveal="1" style="margin:clamp(32px,4cqw,56px) 0 0;font-family:'Archivo','Noto Serif TC',serif;font-weight:900;font-size:{{ m.fsH2 }};letter-spacing:-.02em;line-height:1.15;"><sc-for list="{{ c.projTitle }}" as="w" hint-placeholder-count="2"><span style="display:block">{{ w }}</span></sc-for></h2>
     <p data-reveal="1" style="max-width:32em;margin:clamp(20px,2.5cqw,32px) 0 0;font-size:clamp(17px,1.7cqw,21px);line-height:1.7;color:{{ t.muted }};text-wrap:pretty"><sc-for list="{{ m.projLede }}" as="ln" hint-placeholder-count="1"><span style="display:{{ m.ledeDisp }}">{{ ln }}</span></sc-for></p>
 
     <div style="margin-top:clamp(40px,5cqw,72px);border-top:1px solid {{ t.ink }}">
@@ -334,9 +334,9 @@ a:hover{color:#ff9b00}
                       <div style="display:grid;grid-template-columns:{{ ar.cols }};column-gap:clamp(16px,2.5cqw,40px);border-top:1px solid {{ t.line }};border-bottom:1px solid {{ t.line }}">
                         <sc-for list="{{ o.rows }}" as="r" hint-placeholder-count="2">
                           <div style="grid-column:{{ r.c1 }};grid-row:{{ r.r1 }};order:{{ r.o1 }};border-top:{{ r.bt }};padding:18px 0 {{ r.pb1 }};font-size:11px;font-weight:700;letter-spacing:.12em;line-height:1.9">{{ r.p }}</div>
-                          <div style="grid-column:{{ r.c2 }};grid-row:{{ r.r1 }};order:{{ r.o2 }};border-top:{{ r.bt3 }};display:flex;flex-wrap:{{ ar.ipWrap }};align-items:baseline;row-gap:4px;padding:{{ r.pd2 }};font-size:clamp(14px,1.4cqw,18px);font-weight:700;line-height:1.5;color:{{ t.ink }}"><sc-for list="{{ r.ip }}" as="q" hint-placeholder-count="2"><span style="display:inline-flex;align-items:baseline;white-space:nowrap"><sc-if value="{{ q.plain }}" hint-placeholder-val="{{ true }}">{{ q.t }}</sc-if><sc-if value="{{ q.href }}" hint-placeholder-val="{{ false }}"><a href="{{ q.href }}" target="_blank" rel="noopener" style="display:inline-flex;gap:8px;align-items:baseline;color:{{ t.ink }};text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px" style-hover="color:#ff9b00">{{ q.t }}<span style="color:{{ t.accent }}">↗</span></a></sc-if><sc-if value="{{ q.sep }}" hint-placeholder-val="{{ true }}"><span aria-hidden="true" style="margin:0 .6em;font-size:12px;font-weight:600;opacity:.6">│</span></sc-if></span></sc-for></div>
+                          <div style="grid-column:{{ r.c2 }};grid-row:{{ r.r1 }};order:{{ r.o2 }};border-top:{{ r.bt3 }};display:flex;flex-wrap:{{ ar.ipWrap }};align-items:baseline;row-gap:4px;padding:{{ r.pd2 }};font-size:clamp(14px,1.4cqw,18px);font-weight:700;line-height:1.5;color:{{ t.ink }}"><sc-for list="{{ r.ip }}" as="q" hint-placeholder-count="2"><span style="display:inline-flex;align-items:baseline;white-space:{{ q.ws }}"><sc-if value="{{ q.plain }}" hint-placeholder-val="{{ true }}">{{ q.t }}</sc-if><sc-if value="{{ q.href }}" hint-placeholder-val="{{ false }}"><a href="{{ q.href }}" target="_blank" rel="noopener" style="display:inline-flex;gap:8px;align-items:baseline;color:{{ t.ink }};text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px" style-hover="color:#ff9b00">{{ q.t }}<span style="color:{{ t.accent }}">↗</span></a></sc-if><sc-if value="{{ q.sep }}" hint-placeholder-val="{{ true }}"><span aria-hidden="true" style="margin:0 .6em;font-size:12px;font-weight:600;opacity:.6">│</span></sc-if></span></sc-for></div>
                           <sc-if value="{{ r.hasSc }}" hint-placeholder-val="{{ true }}">
-                            <div style="grid-column:{{ r.c3 }};grid-row:{{ r.r3 }};order:{{ r.o3 }};border-top:{{ r.bt3 }};display:flex;flex-wrap:wrap;align-content:center;align-items:baseline;row-gap:4px;padding:{{ r.pd3 }};font-size:clamp(13px,1.2cqw,15px);line-height:1.6;color:{{ t.muted }}"><sc-for list="{{ r.sc }}" as="q" hint-placeholder-count="4"><span style="display:inline-flex;align-items:baseline;white-space:nowrap">{{ q.t }}<sc-if value="{{ q.sep }}" hint-placeholder-val="{{ true }}"><span aria-hidden="true" style="margin:0 .6em;font-size:12px;font-weight:600;opacity:.6">│</span></sc-if></span></sc-for></div>
+                            <div style="grid-column:{{ r.c3 }};grid-row:{{ r.r3 }};order:{{ r.o3 }};border-top:{{ r.bt3 }};display:flex;flex-wrap:wrap;align-content:center;align-items:baseline;row-gap:4px;padding:{{ r.pd3 }};font-size:clamp(13px,1.2cqw,15px);line-height:1.6;color:{{ t.muted }}"><sc-for list="{{ r.sc }}" as="q" hint-placeholder-count="4"><span style="display:inline-flex;align-items:baseline;white-space:{{ q.ws }};text-wrap:pretty">{{ q.t }}<sc-if value="{{ q.sep }}" hint-placeholder-val="{{ true }}"><span aria-hidden="true" style="margin:0 .6em;font-size:12px;font-weight:600;opacity:.6">│</span></sc-if></span></sc-for></div>
                           </sc-if>
                         </sc-for>
                       </div>
@@ -355,31 +355,11 @@ a:hover{color:#ff9b00}
     </div>
   </section>
 
-  <section id="capabilities" style="padding:clamp(96px,11cqw,168px) clamp(20px,5cqw,72px) 0">
-    <div style="display:flex;justify-content:space-between;gap:12px;padding-bottom:14px;border-bottom:1px solid {{ t.ink }};font-size:12px;font-weight:700;letter-spacing:.12em;color:{{ t.muted }}">
-      <span>DWG. 04 │ SERVICES</span><span>04</span>
-    </div>
-    <h2 data-reveal="1" style="margin:clamp(32px,4cqw,56px) 0 0;max-width:12em;font-family:'Archivo','Noto Serif TC',serif;font-weight:900;font-size:clamp(36px,5.6cqw,80px);letter-spacing:-.02em;line-height:1.2;"><sc-for list="{{ c.capTitle }}" as="w" hint-placeholder-count="2"><span style="display:inline-block">{{ w }}</span></sc-for></h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(clamp(clamp(25% - 18px,(900px - 100%) * 999,50% - 12px),(560px - 100%) * 999,100%),1fr));gap:clamp(40px,4cqw,56px) 24px;margin-top:clamp(40px,5cqw,72px)">
-      <sc-for list="{{ c.caps }}" as="cap" hint-placeholder-count="4">
-        <div data-reveal="1" style="padding:clamp(20px,2.4cqw,32px) 0 0;border-top:1px solid {{ t.ink }}">
-          <div style="display:flex;gap:16px;align-items:baseline">
-            <span style="font-size:12px;font-weight:700;letter-spacing:.08em;color:{{ t.accent }}">{{ cap.n }}</span>
-            <h3 style="margin:0;font-size:clamp(20px,1.9cqw,28px);font-weight:700;letter-spacing:-.01em;line-height:1.3;text-wrap:balance">{{ cap.v }}</h3>
-          </div>
-          <ul style="margin:clamp(16px,2cqw,24px) 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;font-size:15px;line-height:1.65;color:{{ t.muted }}">
-            <sc-for list="{{ cap.items }}" as="it" hint-placeholder-count="5"><li style="display:grid;grid-template-columns:14px minmax(0,1fr);gap:10px;text-wrap:pretty"><span style="width:8px;height:1px;margin-top:.85em;background:{{ t.accent }}"></span><span>{{ it }}</span></li></sc-for>
-          </ul>
-        </div>
-      </sc-for>
-    </div>
-  </section>
-
   <section id="contact" style="padding:clamp(96px,11cqw,168px) clamp(20px,5cqw,72px) clamp(64px,7cqw,104px)">
     <div style="display:flex;justify-content:space-between;gap:12px;padding-bottom:14px;border-bottom:1px solid {{ t.ink }};font-size:12px;font-weight:700;letter-spacing:.12em;color:{{ t.muted }}">
-      <span>DWG. 05 │ CONTACT</span><span>TW │ GMT+8</span>
+      <span>DWG. 04 │ CONTACT</span><span>TW │ GMT+8</span>
     </div>
-    <h2 data-reveal="1" style="margin:clamp(32px,4cqw,56px) 0 0;max-width:12em;font-family:'Archivo','Noto Serif TC',serif;font-weight:900;font-size:clamp(36px,5.6cqw,80px);letter-spacing:-.02em;line-height:1.15"><sc-for list="{{ contactLines }}" as="w" hint-placeholder-count="2"><span style="display:inline-block"><sc-for list="{{ w }}" as="pt" hint-placeholder-count="1"><span style="color:{{ pt.color }}">{{ pt.t }}</span></sc-for></span></sc-for></h2>
+    <h2 data-reveal="1" style="margin:clamp(32px,4cqw,56px) 0 0;font-family:'Archivo','Noto Serif TC',serif;font-weight:900;font-size:{{ m.fsCon }};letter-spacing:-.02em;line-height:1.15"><sc-for list="{{ contactLines }}" as="w" hint-placeholder-count="2"><span style="display:block"><sc-for list="{{ w }}" as="pt" hint-placeholder-count="1"><span style="color:{{ pt.color }}">{{ pt.t }}</span></sc-for></span></sc-for></h2>
     <div style="display:flex;flex-direction:column;margin-top:clamp(40px,5cqw,72px);border-top:1px solid {{ t.ink }}">
       <sc-for list="{{ contacts }}" as="k" hint-placeholder-count="3">
         <a href="{{ k.href }}" target="{{ k.target }}" rel="noreferrer" style="display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px;border-bottom:1px solid {{ t.line }};font-size:clamp(19px,2.6cqw,36px);font-weight:700;letter-spacing:-.01em;transition:padding .35s cubic-bezier(.6,0,.2,1.35),color .25s" style-hover="padding-left:14px;color:{{ t.accent }}">
@@ -400,10 +380,11 @@ const PAL = {
   light: { paper:'#f1efe8', ink:'#151614', muted:'#5c5b54', line:'rgba(21,22,20,.16)', grid:'rgba(21,22,20,.05)', accent:'#c25c00', soft:'rgba(21,22,20,.035)' }
 };
 const EXP = [
-  { y:'2026', m:'06 → NOW', cn:['業務專案經理','二半空間室內裝修設計有限公司','CURRENT',['客戶需求對焦、跨部門協調與提案產出','提案簡報製作，現場及線上提案','既有案件專案管理與工程排程','商業空間、展覽及活動空間的設計與工程整合','導入 AI 工具，優化提案流程']], en:['Business Development & Project Manager','Erban Space Interior Design & Renovation','CURRENT',['Client briefs, cross-team alignment and proposals','Proposal decks, pitched on site and online','Project management and construction scheduling','Design and build for retail, exhibition and event spaces','AI tools adopted to speed up the proposal workflow']] },
+  { y:'2026', m:'06 → NOW', cn:['業務專案經理','二半空間室內裝修設計有限公司','CURRENT',['客戶需求對焦、跨部門協調與提案產出','以生成式 AI 重整提案流程，提案週期從 1–1.5 週縮短至約 3 天','同時推進 3–5 個案件，涵蓋正式櫃位、POP-UP、維修與商業展覽','既有案件專案管理與工程排程']], en:['Business Development & Project Manager','Erban Space Interior Design & Renovation','CURRENT',['Client briefs, cross-team alignment and proposals','Rebuilt the proposal workflow with generative AI, cutting the cycle from 1–1.5 weeks to about 3 days','3–5 projects in parallel across permanent counters, pop-ups, maintenance and trade exhibitions','Project management and construction scheduling']] },
   { y:'2025', m:'04 → 11', cn:['銷售顧問','迅銷集團 UNIQLO 荷蘭鹿特丹旗艦店','8 個月',['全英文環境第一線銷售與服務','顧客需求判讀與銷售轉換','賣場動線與陳列優化建議','內部會議提出問題解決方案']], en:['Sales Advisor','Fast Retailing UNIQLO, Rotterdam Flagship','8 MONTHS',['Frontline sales and service, fully in English','Reading customer needs and converting sales','Circulation and visual merchandising suggestions','Solutions raised in internal meetings']] },
-  { y:'2021', m:'03 → 2024.06', cn:['業務開發及專案執行','二半空間室內裝修設計有限公司','3 年 4 個月',['統籌 8+ 海內外品牌開發，案件規模 NT$10 萬至 1,000 萬，服務全臺門市','陌生開發、現場提案至工程施作，全程專案管理','韓國服飾品牌：來臺首店及旗艦店型設計與工程','美國消費電子視聽品牌：全臺 7 店主視覺翻新及正式櫃位工程','國內代理皮件品牌：全臺 5 間店鋪設計與工程']], en:['Business Development & Project Execution','Erban Space Interior Design & Renovation','3 YRS 4 MOS',['8+ local and overseas brands, NT$100K to NT$10M projects, stores across Taiwan','Prospecting, pitching and construction, run end to end as projects','Korean apparel brand: first Taiwan store and flagship format','US consumer audio brand: visual refresh and permanent counters across 7 stores','Local leather goods distributor: design and build for 5 stores']] },
-  { y:'2018', m:'10 → 2019.07', cn:['影音企劃','三立電視股份有限公司 國際事業部','10 個月',['電視 IP 內容庫審核與選材','網路風向、受眾分布及後台數據分析，策略測試與優化','管理 4+ 節目 IP 社群平台，內容重新剪輯包裝','月廣告營收合計約 NT$100 萬+']], en:['Video Content Planner','Sanlih E-Television, International Business','10 MONTHS',['Selecting from the TV IP content library','Trend, audience and analytics review; strategy tested and refined','4+ show IP channels managed; content re-edited and repackaged','US$32–39K combined monthly ad revenue']] },
+  { y:'2024', m:'06 → 11', cn:['獨立專案承攬','個人接案','6 個月',['以個人身分承接商業空間設計及工程案件','從客戶接洽、提案到施工交付，獨立完成全流程']], en:['Independent\nProject Contractor','Freelance','6 MONTHS',['Commercial space design and construction projects taken on independently','Client contact, proposals and delivery handled end to end']] },
+  { y:'2021', m:'03 → 2024.06', cn:['業務開發及專案執行','二半空間室內裝修設計有限公司','3 年 4 個月',['從零開發 10+ 海內外品牌，透過陌生開發、轉介紹與客戶集團品牌延伸，案件規模 NT$10 萬至 1,000 萬，服務全臺門市','陌生開發、現場提案至工程施作，全程專案管理','National Geographic Apparel：臺灣首店及旗艦店型設計與工程','BOSE：全臺 7 店主視覺翻新及正式櫃位工程，16 小時內完成全數換新','UNI-ACE：全臺 5 間店鋪設計與工程']], en:['Business Development & Project Execution','Erban Space Interior Design & Renovation','3 YRS 4 MOS',['Acquired 10+ local and overseas brands through cold outreach, referrals and expansion within client groups; NT$100K to NT$10M projects across Taiwan','Prospecting, pitching and construction, run end to end as projects','National Geographic Apparel: first Taiwan store and flagship format','BOSE: visual refresh and permanent counters across 7 stores, all 7 refreshed within 16 hours','UNI-ACE: design and build for 5 stores across Taiwan']] },
+  { y:'2018', m:'10 → 2019.07', cn:['影音企劃','三立電視股份有限公司 國際事業部','10 個月',['電視 IP 內容庫審核與選材','網路風向、受眾分布及後台數據分析，策略測試與優化','管理 4 個節目 IP 社群平台，內容重新剪輯包裝','月廣告營收合計 US$32–39K']], en:['Video Content Planner','Sanlih E-Television, International Business','10 MONTHS',['Selecting from the TV IP content library','Trend, audience and analytics review; strategy tested and refined','4 show IP channels managed; content re-edited and repackaged','US$32–39K combined monthly ad revenue']] },
   { y:'2016', m:'12 → 2018.06', cn:['社群編輯','VS MEDIA 臺灣金媒體有限公司','1 年 7 個月',['自有社群追蹤數 10 萬 → 90 萬+','審查並發布 1,000+ 支創作者內容','自有 IP 觸及率與成長率長期全臺前三','建立內容蒐集系統，跨部門數據分析提案']], en:['Social Media Editor','VS MEDIA Taiwan','1 YR 7 MOS',['Owned channels grown from 100K to 900K+ followers','1,000+ creator videos reviewed and published','Reach and growth consistently top 3 in Taiwan','Built a content sourcing system; data insights for cross-team meetings']] },
   { y:'WH', m:'2020 AU │ 2025 NL', cn:['澳洲與荷蘭的跨文化工作經驗','Working Holiday','各 1 年',['澳洲、荷蘭各旅居工作一年，從零建立生活與工作圈','跨語言溝通與多文化環境協作','現場作業判讀與文化適應']], en:['Working across Australia and the Netherlands','Working Holiday','1 YEAR EACH',['A year each in Australia and the Netherlands, building life and work from zero','Cross-language communication in multicultural teams','On-site judgement and cultural adaptability']] }
 ];
@@ -416,10 +397,17 @@ const SOCIAL = [
     { p:'YOUTUBE', ip:{cn:['型男大主廚','戲說台灣','國光幫幫忙'],en:['Super Chef','Taiwan Folklore Theatre','Guo Guang Help']}, sc:null } ] }
 ];
 const VIDEO = [
-  { org:{cn:'商業接案',en:'COMMISSIONED WORK'}, sub:{cn:'COMMISSIONED WORK',en:'商業接案'}, yr:'', rows:[
+  { org:{cn:'影像合作',en:'VIDEO COLLABORATIONS'}, sub:{cn:'VIDEO COLLABORATIONS',en:'影像合作'}, yr:'', rows:[
     { p:'VIDEO', ip:{cn:['藝人小鍾','DJ Dennis','Sam Lin Music','布萊克薛薛','蔡哥'],en:['Xiao Zhong','DJ Dennis','Sam Lin Music','Black Hsueh','Tsai Ge']}, sc:{cn:['影像拍攝','剪輯專案'],en:['Video shoots','Editing projects']}, span:1 } ] },
   { org:{cn:'個人創作',en:'PERSONAL CHANNEL'}, sub:{cn:'PERSONAL CHANNEL',en:'個人創作'}, yr:'', rows:[
     { p:'YOUTUBE', ip:{cn:['@D_Memoir'],en:['@D_Memoir']}, href:'https://www.youtube.com/@D_Memoir', sc:null, span:1 } ] }
+];
+const AI = [
+  { org:{cn:'提案工作流',en:'PROPOSAL WORKFLOW'}, sub:{cn:'PROPOSAL WORKFLOW',en:'提案工作流'}, yr:'GENERATIVE AI', rows:[
+    { p:'01', ip:{cn:['需求對焦'],en:['Brief']}, sc:{cn:['接到需求後先釐清品牌調性、預算與場地條件。'],en:['Clarify brand tone, budget and site conditions first.']} },
+    { p:'02', ip:{cn:['概念視覺'],en:['Concept visuals']}, sc:{cn:['以 ChatGPT 產出參考圖與文案方向，在正式設計前讓客戶對齊風格，減少後期修改。'],en:['Reference images and copy directions generated with ChatGPT, so clients align on style before formal design and later revisions drop.']} },
+    { p:'03', ip:{cn:['提案產出'],en:['Proposal']}, sc:{cn:['以 Claude Design 製作提案簡報與行政文件，一人完成原本需要多人協作的產出。'],en:['Decks and project documents built in Claude Design, one person delivering what used to take a team.']} },
+    { p:{cn:'成果',en:'RESULT'}, ip:{cn:['1–1.5 週 → 約 3 天'],en:['1–1.5 wks → ~3 days']}, sc:{cn:['提案週期從 1–1.5 週縮短至約 3 天，同時推進 3–5 個案件。這個網站本身，也是以同一套工作流製作。'],en:['Proposal cycle cut from 1–1.5 weeks to about 3 days, with 3–5 projects running in parallel. This site was built with the same workflow.']} } ] }
 ];
 const ROLE2 = { cn:'業務開發 │ 需求整合 │ 專案管理 │ 在地團隊協作 │ 報價及談判', en:'Business development │ Needs integration │ Project management │ Local team coordination │ Quotation and negotiation' };
 const SCOPE2 = { cn:'跨部門溝通 │ 廠商管理與協調 │ 現場施工監督 │ 後續維護管理 │ 場地方管理與協調', en:'Cross-functional communication │ Vendor coordination │ On-site supervision │ Post-opening maintenance │ Venue coordination' };
@@ -449,15 +437,15 @@ const BRANDS = [
 const COPY = {
   cn: { h1:'從想法，到實現。', h1size:'clamp(38px,9.5cqw,128px)', themeLabel:'切換深淺色', langLabel:'切換為英文', portraitAlt:'王庭諭 Dex Wang 個人照',
     eggs:['誤差 0 mm','誤差 0 mm，幽默感另計 +2 mm','已複量，業主簽名確認','請勿再點，工班要下班了'],
-    spec:[{k:'所在',v:'臺灣 │ 開放尋求全球機會'},{k:'語言',v:'中文 母語 │ 英文 流利 │ 臺語 流利'},{k:'專長',v:'B2B 業務開發 │ 專案管理與執行 │ 品牌經營與策略 │ 影像製作 │ 線下活動策劃'}],
+    spec:[{k:'所在',v:'臺灣 │ 開放尋求全球機會'},{k:'語言',v:'中文 母語 │ 英文 流利'},{k:'專長',v:'B2B 業務開發 │ 專案管理與執行 │ 品牌經營與策略 │ 影像製作 │ 線下活動策劃'}],
     d1:['以「幽默」「從容」去理解世界，','也用它讓談判桌進到能坦誠說話的位置。'],
     d2:[['近十年的職涯，','我從創作者媒體的社群營運','和電視台的影音企劃起步，'],['學習綜觀品牌經營全局、','制定策略回收數據分析，'],['一路走進零售現場的','空間設計與工程領域、','訓練專案式思維管理和執行，'],['開發韓國、美國與臺灣的品牌，','從第一次陌生接洽','推進到店鋪完工開幕當天。']],
     d3:[['於澳洲與荷蘭各生活及工作一年，','領略東西方工作文化差異，','在直接與含蓄之間切換，'],['在跨文化、跨語境的薰陶下，','能有效感知人際之間，','什麼時候推進，','什麼時候放低姿態。']],
-    stats:[{v:'9',u:'年',k:'工作經驗',d:['空間設計 4 年+','品牌社群 2 年+','海外工作 2 年+']},{v:'10+',u:'',k:'品牌專案管理',d:['零售與公部門','同步管理 5+ 店鋪工程']},{v:'10+',u:'',k:'品牌開發',d:['海內外零售品牌','從零接洽']},{v:'5+',u:'',k:'社群經營',d:['創作者與品牌 IP 平台']}],
-    index:[{n:'01',title:'過往職涯',meta:'2016 - 2026',href:'#experience'},{n:'02',title:'執行成果',meta:'B2B 業務開發與專案管理 │ 品牌策略 │ 影像與文案',href:'#projects'},{n:'03',title:'服務項目',meta:'店鋪設計與工程統籌 │ 品牌社群經營 │ 影像拍攝與剪輯 │ 活動企劃',href:'#capabilities'},{n:'04',title:'聯絡我',meta:'讓我們一起創造驚喜吧!',href:'#contact'}],
+    stats:[{v:'9',u:'年+',k:'職涯跨度',d:['空間設計 3.5 年+','品牌社群 2 年+','海外工作 2 年+']},{v:'10+',u:'',k:'品牌開發',d:['陌生開發、轉介紹','客戶集團品牌延伸']},{v:'3',u:'天',k:'提案週期',d:['從 1–1.5 週縮短','生成式 AI 工作流']},{v:'9',u:'倍',k:'社群經營成長',d:['任職媒體平台','追蹤數 10 萬 → 90 萬+','成長率與觸及率長期全臺前三']}],
+    index:[{n:'01',title:'過往職涯',meta:'2016 - 2026',href:'#experience'},{n:'02',title:'執行成果',meta:'B2B 業務開發與專案管理 │ AI 與工作流 │ 社群與內容營運 │ 影像與文案',href:'#projects'},{n:'03',title:'聯絡我',meta:'讓我們一起創造驚喜吧!',href:'#contact'}],
     expTitle:['每一條跑道，','都沒有白走。'], expLede:['以內容與數據為基礎的品牌社群經營起步，到透過空間設計與專案管理，將工程順利交付。','每一段經歷都在做同一件事：找出重點，把想法推進現實。'],
-    projTitle:['走過的歷程，','留下的成果。'], projLede:'三個領域，依照職涯比重排列。點選標題展開內容。', b2bIntro:'從客戶初步接洽到店鋪開幕，整合業務開發、品牌理解、需求整合、專案工程管理、在地廠商協調與施工交付。', tabHint:'點選店點，切換照片', open:'展開', close:'收合',
-    areas:[{id:'b2b',title:'B2B DEVELOPMENT & PROJECT MANAGEMENT',meta:'STORE DESIGN │ CONSTRUCTION MANAGEMENT │ SITE SUPERVISION'},{id:'brand',title:'BRAND STRATEGY',meta:'SOCIAL MEDIA │ CONTENT STRATEGY │ DATA INSIGHTS',intro:'職涯起點。營運創作者品牌媒體平台的社群營運與內容策略，從日常營運、內容製作到數據分析。'},{id:'video',title:'VIDEO & COPY',meta:'FREELANCE │ PERSONAL CHANNEL │ COPYWRITING',intro:'個人接案與影像創作頻道。分鏡設計、大綱制定、文案寫作到影像製作，致力於將思想澄清、把內容說得更有記憶點。'}],
+    projTitle:['走過的歷程，','留下的成果。'], projLede:'四個領域，點選標題展開內容。', b2bIntro:'從客戶初步接洽到店鋪開幕，整合業務開發、品牌理解、需求整合、專案工程管理、在地廠商協調與施工交付。', tabHint:'點選店點，切換照片', open:'展開', close:'收合',
+    areas:[{id:'b2b',title:'B2B DEVELOPMENT & PROJECT MANAGEMENT',meta:'STORE DESIGN │ CONSTRUCTION MANAGEMENT │ SITE SUPERVISION'},{id:'ai',title:'AI & WORKFLOW',meta:'GENERATIVE AI │ PROPOSAL WORKFLOW │ CLAUDE DESIGN',intro:'把生成式 AI 放進真實的客戶工作。提案前期以 AI 產出概念參考圖，讓客戶在正式設計前先對齊方向；以 Claude Design 建立提案簡報與行政文件流程，一個人撐起原本需要多人協作的產出。這個網站本身，也是同一套工作流的成果。'},{id:'brand',title:'SOCIAL & CONTENT OPERATIONS',meta:'SOCIAL MEDIA │ CONTENT STRATEGY │ DATA INSIGHTS',intro:'職涯起點。營運創作者品牌媒體平台的社群營運與內容策略，從日常營運、內容製作到數據分析。'},{id:'video',title:'VIDEO & COPY',meta:'FREELANCE │ PERSONAL CHANNEL │ COPYWRITING',intro:'影像與文案的延伸能力。從分鏡、大綱、文案到拍攝剪輯，把想法說清楚、說得有記憶點。'}],
     photoTbd:'照片整理中', moreTitle:'更多專案式承攬配合品牌',
     more:[{k:'POP-UP 快閃店鋪設計及施作工程',v:'Achilles-Sorbo │ PIQUADRO'},{k:'正式櫃位店鋪設計及施作工程',v:'AMERICAN TOURISTER │ Crocodile │ JUJURY │ SAMUEL ASHLEY │ VICTORINOX'},{k:'正式店鋪視覺更新工程',v:'earth music & ecology'},{k:'中山捷運站視覺設計案',v:'Metro Taipei'}],
     soonTag:'內容整理中', soon:[{n:'03.5',title:'BRAND STRATEGY',meta:'社群營運、內容策略、創作者合作與數據分析'},{n:'03.6',title:'VIDEO & COPY',meta:'影像企劃、腳本、影片製作與文案撰寫'}],
@@ -465,20 +453,20 @@ const COPY = {
     contactTitle:['讓我們一起開始','[創造驚喜]吧！'], backTop:'回到頂端', li:'前往 LinkedIn 個人頁面' },
   en: { h1:'From idea, to reality.', h1size:'clamp(30px,7cqw,96px)', themeLabel:'Toggle theme', langLabel:'Switch to Chinese', portraitAlt:'Portrait of Dex Wang',
     eggs:['TOLERANCE 0 MM','0 MM, PLUS 2 MM OF HUMOUR','RE-MEASURED. CLIENT SIGNED OFF.','PLEASE STOP. THE CREW WANTS TO GO HOME.'],
-    spec:[{k:'BASED',v:'Taiwan │ Open to global opportunities'},{k:'LANG',v:'Mandarin native │ English fluent │ Taiwanese fluent'},{k:'FOCUS',v:'B2B development │ Project management & delivery │ Brand building & strategy │ Video production │ Offline event planning'}],
+    spec:[{k:'BASED',v:'Taiwan │ Open to global roles'},{k:'LANG',v:'Mandarin native │ English fluent'},{k:'FOCUS',v:'B2B development │ Project management & delivery │ Brand building & strategy │ Video production │ Offline event planning'}],
     d1:['I make sense of the world with humour and composure, ','and use them to bring negotiations to where honest conversation can happen.'],
     d2:[['My career began in creator-media social operations and broadcast video planning, where I learned to see the whole of brand building, set strategy and read the data that came back.'],['From there I moved into retail floors, spatial design and construction, training a project mindset for management and delivery, and developing brands from Korea, the US and Taiwan, from the first cold contact to the day the store opens.']],
     d3:[['A year each living and working in Australia and the Netherlands showed me how Eastern and Western work cultures differ, and taught me to switch between directness and nuance.'],['Shaped across cultures and languages, I can read a room: when to push forward, and when to step back.']],
-    stats:[{v:'9',u:'yrs',k:'Experience',d:['4+ yrs spatial design','2+ yrs brand community','2+ yrs overseas']},{v:'10+',u:'',k:'Brands managed',d:['Retail and public sector','5+ store builds at once']},{v:'10+',u:'',k:'Brands sourced',d:['Retail, local and overseas','From cold outreach']},{v:'5+',u:'',k:'Communities',d:['Creators and brand IPs']}],
-    index:[{n:'01',title:'Experience',meta:'2016 - 2026',href:'#experience'},{n:'02',title:'Selected Work',meta:'B2B Development & Project Management │ Brand Strategy │ Video & Copy',href:'#projects'},{n:'03',title:'Services',meta:'Store Design & Construction │ Brand & Social Management │ Video Production & Editing │ Event Planning',href:'#capabilities'},{n:'04',title:'Contact',meta:'Let’s create something unexpected together.',href:'#contact'}],
+    stats:[{v:'9+',u:'yrs',k:'Career span',d:['3.5+ yrs spatial design','2+ yrs brand community','2+ yrs overseas']},{v:'10+',u:'',k:'Brands acquired',d:['Cold outreach, referrals','Expansion within client groups']},{v:'3',u:'days',k:'Proposal cycle',d:['Down from 1–1.5 weeks','Generative AI workflow']},{v:'9×',u:'',k:'Community growth managed',d:['Company-owned channels','Followers 100K → 900K+','Growth and reach consistently top 3 in Taiwan']}],
+    index:[{n:'01',title:'Experience',meta:'2016 - 2026',href:'#experience'},{n:'02',title:'Track Record',meta:'B2B Development & Project Management │ AI & Workflow │ Social & Content Operations │ Video & Copy',href:'#projects'},{n:'03',title:'Contact',meta:'Let’s create surprises together.',href:'#contact'}],
     expTitle:['Every track I took ','was worth the run.'], expLede:['From brand community management built on content and data, to spatial design and project management that delivers builds on time.','Every role has been about one thing: finding what matters, and turning ideas into reality.'],
-    projTitle:['A journey of work, ','with results to show.'], projLede:'Three fields, ordered by how much of my career they cover. Tap a title to open it.', b2bIntro:'From first client contact to opening day: business development, brand understanding, needs integration, project and construction management, local vendor coordination, and delivery.', tabHint:'TAP A STORE TO SWITCH PHOTOS', open:'OPEN', close:'CLOSE',
-    areas:[{id:'b2b',title:'B2B DEVELOPMENT & PROJECT MANAGEMENT',meta:'STORE DESIGN │ CONSTRUCTION MANAGEMENT │ SITE SUPERVISION'},{id:'brand',title:'BRAND STRATEGY',meta:'SOCIAL MEDIA │ CONTENT STRATEGY │ DATA INSIGHTS',intro:'Where my career began: social operations and content strategy for creator and media brands, from daily operations and content production to data analysis.'},{id:'video',title:'VIDEO & COPY',meta:'FREELANCE │ PERSONAL CHANNEL │ COPYWRITING',intro:'Freelance work and a personal video channel. From storyboards and outlines to copywriting and production, focused on clarifying ideas and making content memorable.'}],
+    projTitle:['A journey of work, ','and what it built.'], projLede:'Four fields. Tap a title to open it.', b2bIntro:'From first client contact to opening day: business development, brand understanding, needs integration, project and construction management, local vendor coordination, and delivery.', tabHint:'TAP A STORE TO SWITCH PHOTOS', open:'OPEN', close:'CLOSE',
+    areas:[{id:'b2b',title:'B2B DEVELOPMENT & PROJECT MANAGEMENT',meta:'STORE DESIGN │ CONSTRUCTION MANAGEMENT │ SITE SUPERVISION'},{id:'ai',title:'AI & WORKFLOW',meta:'GENERATIVE AI │ PROPOSAL WORKFLOW │ CLAUDE DESIGN',intro:'Generative AI built into real client work. Concept visuals generated early in the proposal stage help clients align on direction before formal design begins, and a Claude Design workflow for decks and documents lets one person deliver what used to take a team. This site was built with the same workflow.'},{id:'brand',title:'SOCIAL & CONTENT OPERATIONS',meta:'SOCIAL MEDIA │ CONTENT STRATEGY │ DATA INSIGHTS',intro:'Where my career began: social operations and content strategy for creator and media brands, from daily operations and content production to data analysis.'},{id:'video',title:'VIDEO & COPY',meta:'FREELANCE │ PERSONAL CHANNEL │ COPYWRITING',intro:'Video and copywriting as a supporting skill set. From storyboards and outlines to scripts, shooting and editing, focused on making ideas clear and memorable.'}],
     photoTbd:'PHOTOS COMING', moreTitle:'More project-based brand collaborations',
     more:[{k:'Pop-up store design & build',v:'Achilles-Sorbo │ PIQUADRO'},{k:'Permanent counter design & build',v:'AMERICAN TOURISTER │ Crocodile │ JUJURY │ SAMUEL ASHLEY │ VICTORINOX'},{k:'Permanent store visual update',v:'earth music & ecology'},{k:'Zhongshan Metro Station visual design',v:'Metro Taipei'}],
     soonTag:'IN PROGRESS', soon:[{n:'03.5',title:'BRAND STRATEGY',meta:'Social operations, content strategy, creator collaboration, data analysis'},{n:'03.6',title:'VIDEO & COPY',meta:'Video concepts, scripts, production, copywriting'}],
     capTitle:['Still a rough idea? ','Let’s start here, together.'], caps:[{n:'01',v:'Store Design & Construction',items:['Briefing and planning','Design drawings and proposals','Venue and property coordination','Contractor tendering and site supervision','Inspection and handover']},{n:'02',v:'Brand & Social Management',items:['Brand audit and competitor analysis','Social insight and diagnostic reports','Social media management','Analytics and performance tracking','Content strategy and optimisation']},{n:'03',v:'Video Production & Editing',items:['Briefing and alignment','Concept development and scripting','Production and crew sourcing','Post-production and delivery']},{n:'04',v:'Event Planning',items:['Venue scouting and sourcing','Event concept and proposal','Resource and vendor coordination','Run-of-show management','On-site execution']}],
-    contactTitle:['Let’s start creating ','[something unexpected].'], backTop:'Back to top', li:'LinkedIn profile' }
+    contactTitle:['Let’s create ','[surprises] together.'], backTop:'Back to top', li:'LinkedIn profile' }
 };
 class Component extends DCLogic {
   state = { theme:'dark', lang:'cn', egg:0, area:null, logoPhase:0, logoSeed:[], brandOpen:null, bInstant:null, active:{ natgeo:0, bose:0, uniace:0 }, flips:{ natgeo:0, bose:0, uniace:0 } };
@@ -572,20 +560,24 @@ class Component extends DCLogic {
     const t = PAL[theme], c = COPY[lang];
     const narrow = !!(this.state.vw && this.state.vw < 600);
     const mk = (src, pre) => src.map((o, oi) => ({ org: typeof o.org === 'string' ? o.org : o.org[lang], sub: o.sub[lang], yr: o.yr, n: pre + (oi + 1),
-        rows: o.rows.map((r, ri) => { const sp = (a, hr) => (a || []).map((x, k, arr) => ({ t: x, sep: k < arr.length - 1, href: hr || null, plain: !hr }));
+        rows: o.rows.map((r, ri) => { const sp = (a, hr) => (a || []).map((x, k, arr) => ({ t: x, sep: k < arr.length - 1, href: hr || null, plain: !hr, ws: x.length > 28 ? 'normal' : 'nowrap' }));
           return { c1: narrow ? '1' : '1', c2: narrow ? '1' : '2', c3: narrow ? '1' : '3', r1: narrow ? 'auto' : `${ri + 1}`, r3: narrow ? 'auto' : `${ri + 1} / span ${r.span || 1}`, o1: ri * 3, o2: ri * 3 + 1, o3: narrow && (r.span || 1) > 1 ? 99 : ri * 3 + 2, pb1: narrow ? '0px' : '18px', pd2: narrow ? '6px 0 0' : '16px 0', pd3: narrow ? '6px 0 18px' : '18px 0', bt3: narrow ? '0px solid transparent' : (ri ? `1px dashed ${t.line}` : '0px solid transparent'), p: typeof r.p === 'string' ? r.p : r.p[lang], ip: sp(r.ip[lang], r.href), sc: sp(r.sc && r.sc[lang]), hasSc: !!r.sc, gr: `${ri + 1} / span ${r.span || 1}`, ipr: `${ri + 1}`, bt: ri ? `1px dashed ${t.line}` : '0px solid transparent' }; }) }));
-    const socRows = mk(SOCIAL, '03.2.'), vidRows = mk(VIDEO, '03.3.');
+    const aiRows = mk(AI, '03.2.'), socRows = mk(SOCIAL, '03.3.'), vidRows = mk(VIDEO, '03.4.');
     const toParts = (s) => s.split(' │ ').map((x, k, a) => ({ t: x, sep: k < a.length - 1 }));
     const flat = (d) => d.map((p) => p.join('')).join(lang === 'cn' ? '' : ' ');
     const exL = c.expLede, ci = exL[1].indexOf(lang === 'cn' ? '：' : ': ');
-    const m = { narrow, wide: !narrow, heroMx: narrow ? 'auto' : '0px', heroJc: narrow ? 'center' : 'flex-start', photoW: narrow ? 'min(100%,300px)' : 'clamp(240px,26cqw,340px)',
+    const m = { narrow, wide: !narrow, fsH2: narrow && lang === 'en' ? '7.2cqw' : 'clamp(40px,6.6cqw,92px)', fsCon: narrow && lang === 'en' ? '6.6cqw' : 'clamp(36px,5.6cqw,80px)', statFs: narrow ? 'min(13px,3.1cqw)' : '13px', statWs: narrow && lang === 'cn' ? 'nowrap' : 'normal', heroMx: narrow ? 'auto' : '0px', heroJc: narrow ? 'center' : 'flex-start', photoW: narrow ? 'min(100%,300px)' : 'clamp(240px,26cqw,340px)',
       bio: [{ n: '¶ 01', t: flat(c.d2) }, { n: '¶ 02', t: flat(c.d3) }], bioFs: '16px',
-      idxWs: narrow ? 'nowrap' : 'normal', idxDir: narrow ? 'column' : 'row',
+      idxWs: narrow && lang === 'cn' ? 'nowrap' : 'normal', idxDir: narrow ? 'column' : 'row',
       expLede: narrow && ci > 0 ? [{ l: (() => { const s = exL[0], k = lang === 'cn' ? s.indexOf('，到') + 1 : s.indexOf(', to ') + 1; return k > 0 ? [s.slice(0, k).trim(), s.slice(k).trim()] : [s]; })(), mt: '0px' }, { l: [exL[1].slice(0, ci + 1).trim(), exL[1].slice(ci + 1).trim()], mt: '1.7em' }] : exL.map((x) => ({ l: [x], mt: '0px' })),
       projLede: narrow ? c.projLede.split(/(?<=[。.])\s*/).filter(Boolean) : [c.projLede], ledeDisp: narrow ? 'block' : 'inline',
       hintDisp: narrow ? 'none' : 'inline', accGap: narrow ? '12px' : 'clamp(14px,2.5cqw,40px)' };
     const spec = c.spec.map((s) => ({ ...s, parts: toParts(s.v) }));
-    const idx = c.index.map((x) => ({ ...x, parts: toParts(x.meta).map((q) => ({ ...q, sep: q.sep || (narrow && x.meta.includes(' │ ')), sm: narrow ? '0 0 0 .55em' : '0 .55em' })), idxWs: m.idxWs, idxDir: m.idxDir, arrowDisp: narrow ? 'none' : 'inline', gap: narrow ? '10px' : 'clamp(14px,2.5cqw,40px)', mfs: narrow ? '11px' : '12px' }));
+    const idx = c.index.map((x) => ({ ...x, parts: toParts(x.meta).map((q) => ({ ...q, sm: '0 .55em' })),
+      aDisp: narrow ? 'grid' : 'flex', gtc: narrow ? 'auto minmax(0,1fr)' : 'none', gap: narrow ? '10px 12px' : 'clamp(14px,2.5cqw,40px)',
+      idxWs: narrow ? 'nowrap' : 'normal', tfs: narrow ? 'min(34px,8.2cqw)' : 'clamp(30px,5.4cqw,72px)',
+      mCol: narrow ? '2' : 'auto', mRow: narrow ? '2' : 'auto', mJc: narrow ? 'flex-start' : 'flex-end', mTa: narrow ? 'left' : 'right', mfs: narrow ? '12px' : '12px',
+      arrowDisp: narrow ? 'none' : 'inline' }));
     const brands = BRANDS.map((b, bi) => {
       const bo = brandOpen === b.id;
       const ai = active[b.id], cur = b.stores[ai];
@@ -623,21 +615,21 @@ class Component extends DCLogic {
           tf: p === 1 && s ? `translate(${s.x}px,${s.y}px) rotate(${s.r}deg)` : 'none',
           tr: p === 1 ? 'transform .22s cubic-bezier(.2,.8,.3,1),color .2s' : `transform .7s cubic-bezier(.5,1.8,.4,.8) ${i * 28}ms,color .6s ease .5s` }; }),
       areas: c.areas.map((x, i) => { const o = area === x.id; return { ...x, metaDir: narrow ? 'column' : 'row', nOut: narrow ? 'none' : 'inline', nIn: narrow ? 'block' : 'none', tfs: narrow ? '4.9cqw' : 'clamp(17px,5.4cqw,62px)', hintDisp: m.hintDisp, accGap: m.accGap, metaP: toParts(x.meta).map((q) => ({ ...q, sep: q.sep || narrow })), tl: x.title.split(' & ').map((s, j, a) => j < a.length - 1 ? s + ' &\u00a0' : s), n: '03.' + (i + 1), open: o, isB2B: x.id === 'b2b', isTbl: x.id !== 'b2b', isSoon: false,
-        tbl: x.id === 'video' ? vidRows : socRows,
-        cols: narrow ? 'minmax(0,1fr)' : x.id === 'video' ? 'minmax(96px,.5fr) minmax(0,2.1fr) minmax(0,.9fr)' : 'minmax(76px,.42fr) minmax(0,1fr) minmax(0,1.35fr)',
+        tbl: x.id === 'video' ? vidRows : x.id === 'ai' ? aiRows : socRows,
+        cols: narrow ? 'minmax(0,1fr)' : x.id === 'ai' ? 'minmax(76px,.42fr) minmax(0,.8fr) minmax(0,1.9fr)' : x.id === 'video' ? 'minmax(96px,.5fr) minmax(0,2.1fr) minmax(0,.9fr)' : 'minmax(76px,.42fr) minmax(0,1fr) minmax(0,1.35fr)',
         ipWrap: x.id === 'video' && !narrow ? 'nowrap' : 'wrap', lblDisp: narrow ? 'none' : 'grid',
-        lbl: x.id === 'video' ? (lang === 'cn' ? ['類型','合作 IP 及對象','項目'] : ['TYPE','CLIENTS & IPS','SCOPE']) : (lang === 'cn' ? ['平台','營運 IP','營運項目'] : ['PLATFORM','IP','SCOPE']),
+        lbl: x.id === 'ai' ? (lang === 'cn' ? ['步驟','階段','說明'] : ['STEP','STAGE','DETAIL']) : x.id === 'video' ? (lang === 'cn' ? ['類型','合作 IP 及對象','項目'] : ['TYPE','CLIENTS & IPS','SCOPE']) : (lang === 'cn' ? ['平台','營運 IP','營運項目'] : ['PLATFORM','IP','SCOPE']),
         hint: o ? c.close : c.open, rot: o ? '90deg' : '0deg', rows: o ? '1fr' : '0fr', tr: instant === x.id ? 'none' : 'grid-template-rows .9s cubic-bezier(.2,.8,.2,1)', trIn: instant === x.id ? 'none' : 'opacity .7s ease .1s,filter .8s ease .1s,transform .9s cubic-bezier(.2,.8,.2,1)', op: o ? 1 : 0, blur: o ? '0px' : '8px', y: o ? '0px' : '-14px',
         titleColor: o ? t.accent : t.ink, ring: o ? t.accent : t.ink, ringFill: o ? t.accent : 'transparent', plus: o ? t.paper : t.ink,
         toggle: (e) => this.toggleArea(x.id, e && e.currentTarget) }; }),
-      exp: EXP.map((r) => ({ y: r.y, m: r.m, role: r[lang][0], co: r[lang][1], span: r[lang][2], sum: r[lang][3] })),
+      exp: EXP.map((r) => ({ y: r.y, m: r.m, role: narrow ? r[lang][0] : r[lang][0].replace('\n', ' '), co: r[lang][1], span: r[lang][2], sum: r[lang][3] })),
       navItems: c.index.map((x) => ({ n: x.n, title: x.title, href: x.href })), navDisp: this.state.vw && this.state.vw < 760 ? 'none' : 'flex',
       contactLines: c.contactTitle.map((ln) => ln.split(/(\[[^\]]+\])/).filter(Boolean).map((s) => s[0] === '[' ? { t: s.slice(1, -1), color: t.accent } : { t: s, color: 'inherit' })),
       contacts: [
         { k:'TEL', v:'+886 988 160 323', href:'tel:+886988160323', target:'_self' },
         { k:'MAIL', v:'dexwang93@gmail.com', href:'mailto:dexwang93@gmail.com', target:'_self' },
         { k:'LINE', v: lang === 'cn' ? '加入 LINE 好友' : 'Add on LINE', href: LINE_URL, target:'_blank' },
-        { k:'IN', v:c.li, href:'https://www.linkedin.com/in/dex-wang-ab743a296', target:'_blank' }
+        { k:'IN', v:c.li, href:'https://www.linkedin.com/in/dexwang', target:'_blank' }
       ],
       themeRot: theme === 'dark' ? '0deg' : '180deg',
       cnOp: lang === 'cn' ? 1 : .4, enOp: lang === 'en' ? 1 : .4, langX: lang === 'cn' ? '0px' : '30px',
